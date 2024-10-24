@@ -60,7 +60,7 @@ def get_params(mps_slam_path,
             break
 
     if imu0_calib is None:
-        raise ValueError(f'Could not find imu calibration with label {imu_stream_label}')    
+        raise ValueError(f'Could not find imu calibration with label {imu_stream_label}')
 
     cam_calibs = first_calib.camera_calibs
     cam0_calib = None
@@ -74,7 +74,7 @@ def get_params(mps_slam_path,
                 
     if cam0_calib is None or cam1_calib is None:
         raise ValueError(f'Could not find camera calibration with label {left_cam_label} or {right_cam_label}')
-
+    
     T_device_imu = imu0_calib.get_transform_device_imu()
     T_device_cam0 = cam0_calib.get_transform_device_camera()
     T_device_cam1 = cam1_calib.get_transform_device_camera()
@@ -112,9 +112,9 @@ def get_params(mps_slam_path,
 
     sensors = [
         {
-            'id': 'TOFILL',
+            'id': '',
             'topic': '/imu0',
-            'description': "VI-Sensor IMU (ADIS16448)",
+            'description': "VI-Sensor IMU",
             'sensor_type': 'IMU',
             'sigmas':{
                 'acc_noise_density': acc_nd,
@@ -145,7 +145,7 @@ def get_params(mps_slam_path,
             }
         },
         {
-            'id': '412eab8e4058621f7036b5e765dfe812',#TOCHECK
+            'id': '',
             'sensor_type': 'NCAMERA',
             'description': "VISensor - Aria - original_calibration",
             'topic': "",
@@ -164,7 +164,7 @@ def get_params(mps_slam_path,
             'cameras':[
                 {
                     'camera':{
-                        'id': '0072510f1b21000503000015130c0001',#TOCHECK
+                        'id': cam0_calib.get_serial_number(),
                         'sensor_type': 'CAMERA',
                         'description': "Sensor cam0",
                         'topic': '/cam0',
@@ -175,14 +175,14 @@ def get_params(mps_slam_path,
                         'intrinsics':{
                             'cols': 1,
                             'rows': 4,
-                            'data': [f_x_cam0, f_y_cam0, c_x_cam0, c_y_cam0]
+                            'data': copy.deepcopy(numpy_array_to_list(np.array([f_x_cam0, f_y_cam0, c_x_cam0, c_y_cam0])))
                         },
                         'distortion':{
                             'type': 'equidistant',#TOCHECK
                             'parameters':{
                                 'cols': 1,
                                 'rows': 4,
-                                'data': [k1_cam0, k2_cam0, p1_cam0, p2_cam0]
+                                'data': copy.deepcopy(numpy_array_to_list(np.array([k1_cam0, k2_cam0, p1_cam0, p2_cam0])))
                             }
                         }
                     },
@@ -194,7 +194,7 @@ def get_params(mps_slam_path,
                 },
                 {
                     'camera':{
-                        'id': '0072510f1b2100050300000e230f0001',#TOCHECK
+                        'id': cam1_calib.get_serial_number(),
                         'sensor_type': 'CAMERA',
                         'description': "Sensor cam1",
                         'topic': '/cam1',
@@ -205,14 +205,14 @@ def get_params(mps_slam_path,
                         'intrinsics':{
                             'cols': 1,
                             'rows': 4,
-                            'data': [f_x_cam1, f_y_cam1, c_x_cam1, c_y_cam1]
+                            'data': copy.deepcopy(numpy_array_to_list(np.array([f_x_cam1, f_y_cam1, c_x_cam1, c_y_cam1])))
                         },
                         'distortion':{
                             'type': 'equidistant',#TOCHECK
                             'parameters':{
                                 'cols': 1,
                                 'rows': 4,
-                                'data': [k1_cam1, k2_cam1, p1_cam1, p2_cam1]
+                                'data': copy.deepcopy(numpy_array_to_list(np.array([k1_cam1, k2_cam1, p1_cam1, p2_cam1])))
                             }
                         },
                         'T_B_C':{
@@ -226,47 +226,33 @@ def get_params(mps_slam_path,
         }       
     ]
 
+    identity = np.eye(4)
     extrinsics = [
         {
-            'sensor_id': '412eab8e4058621f7036b5e765dfe812',#TOCHECK
-            'base_sensor_id': 'c63aecb41bfdfd6b7e1fac37c7cbe7bf',#TOCHECK
+            'sensor_id': '',#NCAMERA
+            'base_sensor_id': '',#IMU
             'T_B_S':{
                 'cols': 4,
                 'rows': 4,
-                'data':[
-                    [1,0,0,0],
-                    [0,1,0,0],
-                    [0,0,1,0],
-                    [0,0,0,1]
-                ]
+                'data':copy.deepcopy(identity)
             }
         },
         {
-            'sensor_id': 'c63aecb41bfdfd6b7e1fac37c7cbe7bf',#TOCHECK
-            'base_sensor_id': 'c63aecb41bfdfd6b7e1fac37c7cbe7bf',#TOCHECK
+            'sensor_id': '',#IMU
+            'base_sensor_id': '',#IMU
             'T_B_S':{
                 'rows': 4,
                 'cols': 4,
-                'data':[
-                    [1,0,0,0],
-                    [0,1,0,0],
-                    [0,0,1,0],
-                    [0,0,0,1]
-                ]
+                'data':T_imu_device_list
             }
         },
         {
-            'sensor_id': 'aabb23479caf7592b35518478a2fe08f',#TOCHECK
-            'base_sensor_id': 'c63aecb41bfdfd6b7e1fac37c7cbe7bf',#TOCHECK
+            'sensor_id': '',#OBOMETRY
+            'base_sensor_id': '',#IMU
             'T_B_S':{
                 'rows': 4,
                 'cols': 4,
-                'data':[
-                    [1,0,0,0],
-                    [0,1,0,0],
-                    [0,0,1,0],
-                    [0,0,0,1]
-                ]
+                'data':copy.deepcopy(identity)
             }
         }
     ]
@@ -287,14 +273,15 @@ if __name__ == "__main__":
 
     seq_name = "3cp_eth"
 
-    home = f'/local/home/ogentilhhomme/Documents/baselines/datsets/{seq_name}/'
-    slam_folder = f'/mps_{seq_name}_vrs/'
+    home = f'/local/home/ogentilhomme/Documents/baselines/datasets/{seq_name}'
+    slam_folder = f'mps_{seq_name}_vrs/'
     mps_folder = os.path.join(home, slam_folder)
+    print("Mps folder",mps_folder)
 
     yaml.add_representer(list, represent_matrix)  # For multi-line matrices
     yaml.add_representer(str, custom_string_presenter)  # For strings
     yaml.add_representer(np.ndarray, numpy_array_representer)  # For NumPy arrays
-    yaml.add_representer(list, represent_single_line_list) 
+    # yaml.add_representer(list, represent_single_line_list) 
 
     configs_folder = f'/local/home/ogentilhomme/Documents/baselines/aria_configs/maplab'
     seq_configs_folder = os.path.join(configs_folder, seq_name)
