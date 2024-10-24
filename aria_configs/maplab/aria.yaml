@@ -1,0 +1,150 @@
+sensors:
+  - id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    topic: /imu0
+    description: "VI-Sensor IMU (ADIS16448)"
+    sensor_type: IMU
+    sigmas:
+      acc_noise_density: 4e-3
+      acc_bias_random_walk_noise_density: 4e-3
+      gyro_noise_density: 1e-4
+      gyro_bias_random_walk_noise_density: 1e-4
+    saturation_accel_max_mps2: 150.0
+    saturation_gyro_max_radps: 7.5
+    gravity_magnitude_mps2: 9.81
+
+  - id: aabb23479caf7592b35518478a2fe08f
+    sensor_type: ODOMETRY_6DOF
+    description: "ROVIOLI in Odometry mode"
+    topic: /odometry/maplab_odom_T_M_I
+    T_St_Stp1_fixed_covariance:
+      rows: 6
+      cols: 6
+      data:
+        - [0.001,0,0,0,0,0]
+        - [0,0.001,0,0,0,0]
+        - [0,0,0.001,0,0,0]
+        - [0,0,0,0.0001,0,0]
+        - [0,0,0,0,0.0001,0]
+        - [0,0,0,0,0,0.0001]
+
+  - id: 412eab8e4058621f7036b5e765dfe812
+    sensor_type: NCAMERA
+    description: "VISensor - Euroc - original_calibration"
+    topic: ""
+    T_G_B_fixed_covariance:
+      rows: 6
+      cols: 6
+      data:
+        - [0.1,0,0,0,0,0]
+        - [0,0.1,0,0,0,0]
+        - [0,0,0.1,0,0,0]
+        - [0,0,0,0.01,0,0]
+        - [0,0,0,0,0.01,0]
+        - [0,0,0,0,0,0.01]
+    cameras:
+      - camera:
+          id: 0072510f1b21000503000015130c0001 
+            # 54812562fa109c40fe90b29a59dd7798
+          sensor_type: CAMERA
+          description: "VI-Sensor cam0 (MT9M034)"
+          topic: /cam0
+          line-delay-nanoseconds: 0
+          image_height: 480
+          image_width: 640 #752
+          type: pinhole 
+                #pinhole
+          intrinsics:
+            cols: 1
+            rows: 4
+            data: [241.9439697265625, 323.2308349609375, 240.49070739746094, -0.02369929850101471]  # fx, fy, cx, cy 
+                # [458.6548807207614, 457.2966964634893, 367.2158039615726, 248.37534060980727]
+          distortion:
+            type: radial-tangential
+            parameters:
+              cols: 1
+              rows: 4
+              data: [0.09487513452768326, -0.06320042163133621, 0.007169149350374937, 0.0027229853440076113]  # distortion coefficients
+                  # [-0.28340811217029355, 0.07395907389290132, 0.00019359502856909603, 1.7618711454538528e-05]
+        T_B_C:
+          cols: 4
+          rows: 4
+          data: [0.999999264, -0.00120517, 0.000140916, 0.0008426577,
+                -0.001205449, -0.999997229, 0.002022306, 0.0001947345,
+                 0.0001384781, -0.002022474, -0.999997945, -0.0005854262,
+                 0.0, 0.0, 0.0, 1.0]
+
+                # [0.0148655429818, -0.999880929698, 0.00414029679422, -0.0216401454975,
+                #  0.999557249008, 0.0149672133247, 0.025715529948, -0.064676986768,
+                # -0.0257744366974, 0.00375618835797, 0.999660727178, 0.00981073058949,
+                #  0.0, 0.0, 0.0, 1.0]
+
+      - camera:
+          id: 0072510f1b2100050300000e230f0001
+              #54812562fa109c40fe90b29a59dd7723
+          sensor_type: CAMERA
+          description: "VI-Sensor cam1 (MT9M034)"
+          topic: /cam1
+          line-delay-nanoseconds: 0
+          image_height: 480
+          image_width: 640
+                      #752
+          type: pinhole 
+                #pinhole
+          intrinsics:
+            cols: 1
+            rows: 4
+            data: [241.62847900390625, 322.3279724121094, 239.14724731445312, -0.02504565194249153]
+                  #[457.5874266035361, 456.13442556023665, 379.9994465203525, 255.2381853862733]
+          distortion:
+            type: radial-tangential
+            parameters:
+              cols: 1
+              rows: 4
+              data: [0.09720715135335922, -0.06432244926691055, 0.005799917504191399, 0.004035612102597952]
+                  #[-0.283683654496, 0.0745128430929, -0.000104738949098, -3.55590700274e-05]
+        T_B_C:
+          cols: 4
+          rows: 4
+          data:   [0.25250935, 0.96685532, 0.03781298, 0.00502078,
+                   0.96713065, -0.25098567, -0.04079823, -0.10793422,
+                  -0.02995547, 0.04687203, -0.99845164, -0.08412732,
+                   0.0, 0.0, 0.0, 1.0]
+          
+              #   [0.0125552670891, -0.999755099723, 0.0182237714554, -0.0198435579556,
+              #   0.999598781151, 0.0130119051815, 0.0251588363115, 0.0453689425024,
+              #  -0.0253898008918, 0.0179005838253, 0.999517347078, 0.00786212447038,
+              #   0.0, 0.0, 0.0, 1.0]
+
+extrinsics:
+  - sensor_id: 412eab8e4058621f7036b5e765dfe812
+    base_sensor_id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    T_B_S:
+      cols: 4
+      rows: 4
+      data:
+        - [1,0,0,0]
+        - [0,1,0,0]
+        - [0,0,1,0]
+        - [0,0,0,1]
+
+  - sensor_id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    base_sensor_id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    T_B_S:
+      rows: 4
+      cols: 4
+      data:
+        - [1,0,0,0]
+        - [0,1,0,0]
+        - [0,0,1,0]
+        - [0,0,0,1]
+
+  - sensor_id: aabb23479caf7592b35518478a2fe08f
+    base_sensor_id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    T_B_S:
+      rows: 4
+      cols: 4
+      data:
+        - [1,0,0,0]
+        - [0,1,0,0]
+        - [0,0,1,0]
+        - [0,0,0,1]
