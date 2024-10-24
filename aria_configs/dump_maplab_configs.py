@@ -127,7 +127,7 @@ def get_params(mps_slam_path,
             }
         },
         {
-            'id': 'TOFILL',#TOCHECK
+            'id': 'aabb23479caf7592b35518478a2fe08f',#TOCHECK
             'sensor_type': 'ODOMETRY_6DOF',#TOCHECK
             'description': "ROVIOLI in Odometry mode",#TOCHECK
             'topic': '/odometry/maplab_odom_T_M_I', #TOCHECK
@@ -284,7 +284,7 @@ def write_aria_yaml(data, filepath):
         yaml.dump(data, outfile, default_flow_style=False, sort_keys=False)   
 
 if __name__ == "__main__":
-    
+
     seq_name = "3cp_eth"
 
     home = f'/local/home/ogentilhhomme/Documents/baselines/datsets/{seq_name}/'
@@ -303,7 +303,3 @@ if __name__ == "__main__":
     data = get_params(mps_folder)
     output_file = os.path.join(seq_configs_folder, 'output_aria.yaml')
     write_aria_yaml(data, output_file)
-
-    
-
-
