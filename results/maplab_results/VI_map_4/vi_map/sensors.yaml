@@ -1,0 +1,145 @@
+sensors:
+  - id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    sensor_type: IMU
+    topic: /imu0
+    description: VI-Sensor IMU
+    sigmas:
+      gyro_noise_density: 0.000174532925199433
+      gyro_bias_random_walk_noise_density: 0.0002443710272822585
+      acc_noise_density: 0.0007844799999999999
+      acc_bias_random_walk_noise_density: 0.006448330462011076
+    saturation_accel_max_mps2: 78.44799999999999
+    saturation_gyro_max_radps: 1000
+    gravity_magnitude_mps2: 9.81
+  - id: 412eab8e4058621f7036b5e765dfe812
+    sensor_type: NCAMERA
+    topic: ""
+    description: VISensor - Aria - original_calibration
+    T_G_B_fixed_covariance:
+      rows: 6
+      cols: 6
+      data:
+        - [0.1, 0, 0, 0, 0, 0]
+        - [0, 0.1, 0, 0, 0, 0]
+        - [0, 0, 0.1, 0, 0, 0]
+        - [0, 0, 0, 0.01, 0, 0]
+        - [0, 0, 0, 0, 0.01, 0]
+        - [0, 0, 0, 0, 0, 0.01]
+    cameras:
+      - camera:
+          id: 0072510f1b21000503000015130c0001
+          sensor_type: CAMERA
+          topic: /cam0
+          description: Sensor cam0
+          compressed: false
+          line-delay-nanoseconds: 0
+          image_height: 480
+          image_width: 640
+          type: pinhole
+          intrinsics:
+            rows: 4
+            cols: 1
+            data:
+              - 241.9439697265625
+              - 241.9439697265625
+              - 323.2308349609375
+              - 240.4907073974609
+          distortion:
+            type: equidistant
+            parameters:
+              rows: 4
+              cols: 1
+              data:
+                - -0.02369929850101471
+                - 0.09487513452768326
+                - 0.001138215651735663
+                - 1.691551005933434e-06
+        T_B_C:
+          rows: 4
+          cols: 4
+          data:
+            - [0.9797075806738667, 0.1995954012644347, 0.01829568703952834, 0.0176368631782946]
+            - [0.06773714728400493, -0.243804849337159, -0.9674558771941544, -0.1083541845006646]
+            - [-0.1886391667920109, 0.949063154502257, -0.2523774821933238, 0.07623169432100906]
+            - [0, 0, 0, 1]
+      - camera:
+          id: 0072510f1b2100050300000e230f0001
+          sensor_type: CAMERA
+          topic: /cam1
+          description: Sensor cam1
+          compressed: false
+          line-delay-nanoseconds: 0
+          image_height: 480
+          image_width: 640
+          type: pinhole
+          intrinsics:
+            rows: 4
+            cols: 1
+            data:
+              - 241.6284790039062
+              - 241.6284790039062
+              - 322.3279724121094
+              - 239.1472473144531
+          distortion:
+            type: equidistant
+            parameters:
+              rows: 4
+              cols: 1
+              data:
+                - -0.02504565194249153
+                - 0.09720715135335922
+                - 0.001786214648745954
+                - -0.001465075416490436
+        T_B_C:
+          rows: 4
+          cols: 4
+          data:
+            - [0.9883945844054579, 0.02694724700689053, -0.1494991351035577, -0.00113524794666034]
+            - [0.02654300529867868, -0.9996366282402063, -0.004698973320334273, -0.0007713556452914613]
+            - [-0.1495714357344894, 0.000676283446882516, -0.9887506906460406, -0.006000408672721051]
+            - [0, 0, 0, 1]
+  - id: aabb23479caf7592b35518478a2fe08f
+    sensor_type: ODOMETRY_6DOF
+    topic: /odometry/maplab_odom_T_M_I
+    description: ROVIOLI in Odometry mode
+    T_St_Stp1_fixed_covariance:
+      rows: 6
+      cols: 6
+      data:
+        - [0.001, 0, 0, 0, 0, 0]
+        - [0, 0.001, 0, 0, 0, 0]
+        - [0, 0, 0.001, 0, 0, 0]
+        - [0, 0, 0, 0.0001, 0, 0]
+        - [0, 0, 0, 0, 0.0001, 0]
+        - [0, 0, 0, 0, 0, 0.0001]
+extrinsics:
+  - sensor_id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    base_sensor_id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    T_B_S:
+      rows: 4
+      cols: 4
+      data:
+        - [1, 0, 0, 0]
+        - [0, 1, 0, 0]
+        - [0, 0, 1, 0]
+        - [0, 0, 0, 1]
+  - sensor_id: 412eab8e4058621f7036b5e765dfe812
+    base_sensor_id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    T_B_S:
+      rows: 4
+      cols: 4
+      data:
+        - [1, 0, 0, 0]
+        - [0, 1, 0, 0]
+        - [0, 0, 1, 0]
+        - [0, 0, 0, 1]
+  - sensor_id: aabb23479caf7592b35518478a2fe08f
+    base_sensor_id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
+    T_B_S:
+      rows: 4
+      cols: 4
+      data:
+        - [1, 0, 0, 0]
+        - [0, 1, 0, 0]
+        - [0, 0, 1, 0]
+        - [0, 0, 0, 1]

@@ -38,8 +38,10 @@ def get_aria_imu_calibs():
     gyro_nd = float(1e-2 * (np.pi / 180.0))
     acc_rw = float(3.5e-5 * gravity * np.sqrt(353))
     gyro_rw = float(1.3e-3 * (np.pi / 180.0) * np.sqrt(116))
+    sat_acc = float(8 * gravity)
+    sat_gyr = float(1000)
     
-    return acc_nd, gyro_nd, acc_rw, gyro_rw
+    return acc_nd, gyro_nd, acc_rw, gyro_rw, sat_acc, sat_gyr
 
 def get_params(mps_slam_path, 
                      imu_stream_label='imu-right',
@@ -84,10 +86,13 @@ def get_params(mps_slam_path,
     T_imu_cam1 = T_device_imu.inverse() @ T_device_cam1
 
     T_imu_device_list = T_imu_device.to_matrix().tolist()
+    T_device_imu_list = T_device_imu.to_matrix().tolist()
+    T_device_cam0_list = T_device_cam0.to_matrix().tolist()
+    T_device_cam1_list = T_device_cam1.to_matrix().tolist()
     T_imu_cam0_list = T_imu_cam0.to_matrix().tolist()
     T_imu_cam1_list = T_imu_cam1.to_matrix().tolist()
 
-    acc_nd, gyro_nd, acc_rw, gyro_rw = get_aria_imu_calibs()
+    acc_nd, gyro_nd, acc_rw, gyro_rw, sat_acc, sat_gyr = get_aria_imu_calibs()
 
     camera_params = cam0_calib.projection_params()
     f_x_cam0, f_y_cam0, c_x_cam0, c_y_cam0 = (
@@ -121,8 +126,8 @@ def get_params(mps_slam_path,
                 'acc_bias_random_walk_noise_density': acc_rw,
                 'gyro_noise_density': gyro_nd,
                 'gyro_bias_random_walk_noise_density': gyro_rw,
-                'saturation_accel_max_mps2': 150.0,
-                'saturation_gyro_max_radps': 7.5,
+                'saturation_accel_max_mps2': sat_acc,
+                'saturation_gyro_max_radps': sat_gyr,
                 'gravity_magnitude_mps2': 9.81
             }
         },
@@ -243,7 +248,7 @@ def get_params(mps_slam_path,
             'T_B_S':{
                 'rows': 4,
                 'cols': 4,
-                'data':T_imu_device_list
+                'data':T_device_imu_list
             }
         },
         {

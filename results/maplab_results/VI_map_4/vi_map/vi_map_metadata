@@ -1,0 +1,268 @@
+files {
+  file_type: 0
+  path: "missions"
+}
+files {
+  file_type: 1
+  path: "vertices0"
+}
+files {
+  file_type: 1
+  path: "vertices1"
+}
+files {
+  file_type: 1
+  path: "vertices2"
+}
+files {
+  file_type: 1
+  path: "vertices3"
+}
+files {
+  file_type: 1
+  path: "vertices4"
+}
+files {
+  file_type: 1
+  path: "vertices5"
+}
+files {
+  file_type: 1
+  path: "vertices6"
+}
+files {
+  file_type: 1
+  path: "vertices7"
+}
+files {
+  file_type: 1
+  path: "vertices8"
+}
+files {
+  file_type: 1
+  path: "vertices9"
+}
+files {
+  file_type: 1
+  path: "vertices10"
+}
+files {
+  file_type: 1
+  path: "vertices11"
+}
+files {
+  file_type: 1
+  path: "vertices12"
+}
+files {
+  file_type: 1
+  path: "vertices13"
+}
+files {
+  file_type: 1
+  path: "vertices14"
+}
+files {
+  file_type: 1
+  path: "vertices15"
+}
+files {
+  file_type: 1
+  path: "vertices16"
+}
+files {
+  file_type: 1
+  path: "vertices17"
+}
+files {
+  file_type: 1
+  path: "vertices18"
+}
+files {
+  file_type: 1
+  path: "vertices19"
+}
+files {
+  file_type: 1
+  path: "vertices20"
+}
+files {
+  file_type: 1
+  path: "vertices21"
+}
+files {
+  file_type: 1
+  path: "vertices22"
+}
+files {
+  file_type: 1
+  path: "vertices23"
+}
+files {
+  file_type: 1
+  path: "vertices24"
+}
+files {
+  file_type: 1
+  path: "vertices25"
+}
+files {
+  file_type: 1
+  path: "vertices26"
+}
+files {
+  file_type: 1
+  path: "vertices27"
+}
+files {
+  file_type: 1
+  path: "vertices28"
+}
+files {
+  file_type: 1
+  path: "vertices29"
+}
+files {
+  file_type: 1
+  path: "vertices30"
+}
+files {
+  file_type: 1
+  path: "vertices31"
+}
+files {
+  file_type: 1
+  path: "vertices32"
+}
+files {
+  file_type: 1
+  path: "vertices33"
+}
+files {
+  file_type: 1
+  path: "vertices34"
+}
+files {
+  file_type: 1
+  path: "vertices35"
+}
+files {
+  file_type: 1
+  path: "vertices36"
+}
+files {
+  file_type: 1
+  path: "vertices37"
+}
+files {
+  file_type: 1
+  path: "vertices38"
+}
+files {
+  file_type: 1
+  path: "vertices39"
+}
+files {
+  file_type: 1
+  path: "vertices40"
+}
+files {
+  file_type: 1
+  path: "vertices41"
+}
+files {
+  file_type: 1
+  path: "vertices42"
+}
+files {
+  file_type: 1
+  path: "vertices43"
+}
+files {
+  file_type: 1
+  path: "vertices44"
+}
+files {
+  file_type: 1
+  path: "vertices45"
+}
+files {
+  file_type: 1
+  path: "vertices46"
+}
+files {
+  file_type: 1
+  path: "vertices47"
+}
+files {
+  file_type: 1
+  path: "vertices48"
+}
+files {
+  file_type: 1
+  path: "vertices49"
+}
+files {
+  file_type: 1
+  path: "vertices50"
+}
+files {
+  file_type: 1
+  path: "vertices51"
+}
+files {
+  file_type: 1
+  path: "vertices52"
+}
+files {
+  file_type: 1
+  path: "vertices53"
+}
+files {
+  file_type: 1
+  path: "vertices54"
+}
+files {
+  file_type: 1
+  path: "vertices55"
+}
+files {
+  file_type: 1
+  path: "vertices56"
+}
+files {
+  file_type: 1
+  path: "vertices57"
+}
+files {
+  file_type: 1
+  path: "vertices58"
+}
+files {
+  file_type: 1
+  path: "vertices59"
+}
+files {
+  file_type: 1
+  path: "vertices60"
+}
+files {
+  file_type: 1
+  path: "vertices61"
+}
+files {
+  file_type: 1
+  path: "vertices62"
+}
+files {
+  file_type: 1
+  path: "vertices63"
+}
+files {
+  file_type: 2
+  path: "edges0"
+}
+files {
+  file_type: 3
+  path: "landmark_index"
+}
